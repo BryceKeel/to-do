@@ -12,36 +12,31 @@ function listLength(){
 }
 
 function createListElement() {
-	// implement creates an element "li"
-	// implement makes text from input field the li text
-	// implement adds li to ul
-	// implement Reset text input field
+    var li = document.createElement("li"); // Create a new li element
+    li.appendChild(document.createTextNode(input.value)); // Set its text content to the input value
+    ul.appendChild(li); // Append it to the ul
 
+    // Reset text input field
+    input.value = "";
 
-	//START STRIKETHROUGH
-	// because it's in the function, it only adds it for new items
 	function crossOut() {
-		//implement me
-	}
+        li.classList.toggle("done"); // Toggle the 'done' class on click
+    }
 
-	li.addEventListener("click",crossOut);
-	//END STRIKETHROUGH
+    li.addEventListener("click", crossOut);
 
+    // START ADD DELETE BUTTON
+    var dBtn = document.createElement("button"); // Create a delete button
+    dBtn.appendChild(document.createTextNode("X")); // Set its text content to 'X'
+    li.appendChild(dBtn); // Append it to the li
 
-	// START ADD DELETE BUTTON
-
-		//Use the implemented function from below here
-	
-	// END ADD DELETE BUTTON
-
-
-	//ADD CLASS DELETE (DISPLAY: NONE)
-	function deleteListItem(){
-		//Implement me
-	}
-	//END ADD CLASS DELETE
+    dBtn.addEventListener("click", deleteListItem); // Add event listener to the delete button
+    // END ADD DELETE BUTTON
+f
+function deleteListItem() {
+	li.classList.add("delete"); // Add 'delete' class to the li
 }
-
+}
 
 function addListAfterClick(){
 	if (inputLength() > 0) { //makes sure that an empty input field doesn't create a li
